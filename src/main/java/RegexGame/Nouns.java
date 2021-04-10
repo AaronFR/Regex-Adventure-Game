@@ -2,7 +2,6 @@ package RegexGame;
 
 import static RegexGame.GameUtil.findByPattern;
 
-import RegexGame.Verbs.Verb;
 import java.util.function.Function;
 
 public class Nouns {

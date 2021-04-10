@@ -1,5 +1,8 @@
 package RegexGame;
 
+import static RegexGame.GameLines.gameExit;
+import static RegexGame.GameLines.gameExitCommand;
+import static RegexGame.GameLines.gameIntro;
 import static RegexGame.Nouns.parseForNoun;
 import static RegexGame.Verbs.parseForVerb;
 
@@ -10,9 +13,7 @@ import java.util.Scanner;
 public class Game {
 
     public static void main(String[] args) {
-        // INITIAL: should be static imports
-        System.out.println("Welcome to 'bAdventure'");
-        System.out.println("\nYou find yourself in a room. What will you do?");
+        System.out.println(gameIntro);
 
         Room room = new Room();
         Player player = new Player();
@@ -27,7 +28,6 @@ public class Game {
             Verb verb = parseForVerb(input);
             Noun noun = parseForNoun(input);
 
-            // INITIAL: more flexible implementation -> Send to each object (Should not have double if statements)
             if (Noun.ROOM.equals(noun)) {
                 room.runVerb(verb);
             }
@@ -35,10 +35,10 @@ public class Game {
                 player.runVerb(verb);
             }
 
-            if ("exit game".equals(input)) {
+            if (gameExitCommand.equals(input)) {
                 input = "";
                 exitGame = true;
-                System.out.println("Well suit yourself");
+                System.out.println(gameExit);
             }
         }
     }
