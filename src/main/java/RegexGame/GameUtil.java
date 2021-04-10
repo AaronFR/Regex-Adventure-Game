@@ -8,15 +8,15 @@ public class GameUtil {
 
     public enum DetectVerb {
 
-        LOOK (b -> findByPattern("(l*o+k+|s+e+|v+i*e*w+|p+e+r+c*e*i*v*e+)", b)),
-        USE (b -> findByPattern("(u+s+e*)", b));
+        LOOK (b -> findByPattern("(\\bl*o+k+\\b|\\bs+e+\\b|\\bv+i*e*w+\\b|\\bp+e+r+c*e*i*v*e+\\b)", b)),
+        USE (b -> findByPattern("(\\bu+s+e*\\b)", b));
 
         private final Function<String,Boolean> validPatterns ;
         DetectVerb(Function<String,Boolean> validPatterns) {
             this.validPatterns = validPatterns;
         }
 
-        public Boolean compute(String x) {
+        public Boolean parse(String x) {
             return validPatterns.apply(x);
         }
     }
@@ -27,15 +27,15 @@ public class GameUtil {
             e.g will have to ask for "Object 1", "Person 1"
          */
 
-        ROOM (b -> findByPattern("oo*m+", b)),
-        PLAYER (b -> findByPattern("(m+e+|s+e+l+f*|p+l+a+y*e*r*)", b));
+        ROOM (b -> findByPattern("oo*m+\\b", b)),
+        PLAYER (b -> findByPattern("(\\bm+e+\\b|\\bs+e+l+f*\\b|\\bp+l+a+y*e*r*\\b)", b));
 
         private final Function<String,Boolean> validPatterns ;
         DetectTopic(Function<String,Boolean> validPatterns) {
             this.validPatterns = validPatterns;
         }
 
-        public Boolean compute(String x) {
+        public Boolean parse(String x) {
             return validPatterns.apply(x);
         }
     }
