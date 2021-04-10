@@ -12,6 +12,7 @@ public class Game {
         System.out.println("\nYou find yourself in a room. What will you do?");
 
         Room room = new Room();
+        Player player = new Player();
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine().toLowerCase();
@@ -24,7 +25,11 @@ public class Game {
             if (verb == "look") {
                 System.out.println(room.look());
             }
-
+        }
+        if (noun == "player") {
+            if (verb == "look") {
+                System.out.println(player.look());
+            }
         }
 
 
@@ -47,11 +52,17 @@ public class Game {
     private static String parseForNoun(String input) {
         String output = null;
 
-        Pattern pattern = Pattern.compile("o*m+");
-        Matcher matcher = pattern.matcher(input);
+        Pattern roomPattern = Pattern.compile("o*m+");
+        Matcher roomMatcher = roomPattern.matcher(input);
 
-        if(matcher.find()) {
+        Pattern personPattern = Pattern.compile("(m+e+|s*e*l*f+|p*l*a*y*e*r+)");
+        Matcher playerMatcher = personPattern.matcher(input);
+
+        if(roomMatcher.find()) {
             output = "room";
+        }
+        if(playerMatcher.find()) {
+            output = "player";
         }
         return output;
     }
