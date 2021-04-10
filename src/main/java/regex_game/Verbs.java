@@ -1,13 +1,12 @@
-package RegexGame;
+package regex_game;
 
-import static RegexGame.GameUtil.findByPattern;
+import static regex_game.GameUtil.findByPattern;
 
 import java.util.function.Function;
 
-public class Verbs {
+class Verbs {
 
-    public enum Verb {
-
+    enum Verb {
         LOOK (b -> findByPattern("(\\bl*o+k+\\b|\\bs+e+\\b|\\bv+i*e*w+\\b|\\bp+e+r+c*e*i*v*e+\\b)", b)),
         USE (b -> findByPattern("(\\bu+s+e*\\b)", b));
 
@@ -22,7 +21,7 @@ public class Verbs {
     }
 
     static Verb parseForVerb(String input) {
-        Boolean isMatch;
+        boolean isMatch;
 
         for (Verb verb: Verb.values()){
             isMatch = verb.parse(input);

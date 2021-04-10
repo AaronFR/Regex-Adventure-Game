@@ -1,9 +1,9 @@
-package RegexGame;
+package regex_game;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GameUtil {
+class GameUtil {
 
     static Boolean findByPattern(String regexPattern, String input) {
         Pattern pattern = Pattern.compile(regexPattern);

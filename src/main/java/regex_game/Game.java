@@ -1,13 +1,13 @@
-package RegexGame;
+package regex_game;
 
-import static RegexGame.GameLines.gameExit;
-import static RegexGame.GameLines.gameExitCommand;
-import static RegexGame.GameLines.gameIntro;
-import static RegexGame.Nouns.parseForNoun;
-import static RegexGame.Verbs.parseForVerb;
+import static regex_game.GameLines.gameExit;
+import static regex_game.GameLines.gameExitCommand;
+import static regex_game.GameLines.gameIntro;
+import static regex_game.Nouns.parseForNoun;
+import static regex_game.Verbs.parseForVerb;
 
-import RegexGame.Nouns.Noun;
-import RegexGame.Verbs.Verb;
+import regex_game.Nouns.Noun;
+import regex_game.Verbs.Verb;
 import java.util.Scanner;
 
 public class Game {
@@ -19,19 +19,17 @@ public class Game {
         Player player = new Player();
 
         Scanner scanner = new Scanner(System.in);
-        Boolean exitGame = false;
-        String input = null;
+        boolean exitGame = false;
 
         while (!exitGame) {
-            input = scanner.nextLine().toLowerCase();
-
+            String input = scanner.nextLine().toLowerCase();
             Verb verb = parseForVerb(input);
             Noun noun = parseForNoun(input);
 
-            if (Noun.ROOM.equals(noun)) {
+            if (Noun.ROOM.equals(noun) && verb != null) {
                 room.runVerb(verb);
             }
-            if (Noun.PLAYER.equals(noun)) {
+            if (Noun.PLAYER.equals(noun) && verb != null) {
                 player.runVerb(verb);
             }
 

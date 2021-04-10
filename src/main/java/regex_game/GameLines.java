@@ -1,4 +1,4 @@
-package RegexGame;
+package regex_game;
 
 import java.util.Random;
 

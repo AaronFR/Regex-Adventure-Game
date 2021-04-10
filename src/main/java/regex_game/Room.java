@@ -1,10 +1,10 @@
-package RegexGame;
+package regex_game;
 
-import RegexGame.Verbs.Verb;
+import regex_game.Verbs.Verb;
 
-public class Room {
+class Room {
 
-    public void runVerb(Verb verb) {
+    void runVerb(Verb verb) {
         switch (verb) {
             case LOOK:
                 System.out.println(this.look());
@@ -17,10 +17,10 @@ public class Room {
         }
     }
 
-    public String look() {
+    String look() {
         return "Just a completely empty room... oh and you, I guess";
     }
-    public String use() {
+    String use() {
         return "...Aren't you already?";
     }
 
