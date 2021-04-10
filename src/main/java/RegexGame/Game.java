@@ -1,7 +1,10 @@
 package RegexGame;
 
-import RegexGame.GameUtil.DetectTopic;
-import RegexGame.GameUtil.DetectVerb;
+import static RegexGame.Nouns.parseForNoun;
+import static RegexGame.Verbs.parseForVerb;
+
+import RegexGame.Nouns.Noun;
+import RegexGame.Verbs.Verb;
 import java.util.Scanner;
 
 public class Game {
@@ -21,27 +24,30 @@ public class Game {
         while (!exitGame) {
             input = scanner.nextLine().toLowerCase();
 
-            String verb = parseForVerb(input);
-            String noun = parseForNoun(input);
+            Verb verb = parseForVerb(input);
+            Noun noun = parseForNoun(input);
 
             // INITIAL: more flexible implementation -> Send to each object (Should not have double if statements)
-            // Should be enums not Strings
-            if ("room".equals(noun)) {
+            if (Noun.ROOM.equals(noun)) {
                 switch (verb) {
-                    case "look":
+                    case LOOK:
                         System.out.println(room.look());
-                    case "use":
+                        break;
+                    case USE:
                         System.out.println(room.use());
+                        break;
                     default:
                         System.out.println("Yes, Room. Very Good");
                 }
             }
-            if ("player".equals(noun)) {
+            if (Noun.PLAYER.equals(noun)) {
                 switch (verb) {
-                    case "look":
+                    case LOOK:
                         System.out.println(player.look());
-                    case "use":
+                        break;
+                    case USE:
                         System.out.println(player.use());
+                        break;
                     default:
                         System.out.println("Yeah what about you?");
                 }
@@ -53,31 +59,6 @@ public class Game {
                 System.out.println("Well suit yourself");
             }
         }
-    }
-
-    // INITIAL: Obvious code duplication.
-    private static String parseForVerb(String input) {
-        String output = "";
-
-        if(DetectVerb.LOOK.parse(input)) {
-            output = "look";
-        }
-        if(DetectVerb.USE.parse(input)) {
-            output = "use";
-        }
-        return output;
-    }
-
-    private static String parseForNoun(String input) {
-        String output = "";
-
-        if(DetectTopic.ROOM.parse(input)) {
-            output = "room";
-        }
-        if(DetectTopic.PLAYER.parse(input)) {
-            output = "player";
-        }
-        return output;
     }
 
 }

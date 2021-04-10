@@ -10,6 +10,7 @@ public class Player {
             "A particularly weak Orc",
             "A very 'down to earth' Elf",
             "A hairless gorilla",
+            "A mutant double legged mermaid",
             "A 99¢ vanilla milkshake somehow shaped into the form of a man",
             "An evil, mischievous worm\nNo. You're literally an earth-worm",
             "A giant replica of the Colossus of Rhodes just prior to it's destruction circa BCE 226"
