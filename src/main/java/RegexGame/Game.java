@@ -1,10 +1,8 @@
 package RegexGame;
 
+import RegexGame.GameUtil.DetectTopic;
+import RegexGame.GameUtil.DetectVerb;
 import java.util.Scanner;
-import java.util.function.Function;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Game {
 
     public static void main(String[] args) {
@@ -26,14 +24,18 @@ public class Game {
             if (verb.equals("look")) {
                 System.out.println(room.look());
             }
+            if (verb.equals("use")) {
+                System.out.println(room.use());
+            }
         }
         if (noun == "player") {
             if (verb == "look") {
                 System.out.println(player.look());
             }
+            if (verb.equals("use")) {
+                System.out.println(player.use());
+            }
         }
-
-
 
     }
 
@@ -41,11 +43,11 @@ public class Game {
     private static String parseForVerb(String input) {
         String output = null;
 
-        Pattern pattern = Pattern.compile("o*k++");
-        Matcher matcher = pattern.matcher(input);
-
-        if(matcher.find()) {
+        if(DetectVerb.LOOK.compute(input)) {
             output = "look";
+        }
+        if(DetectVerb.USE.compute(input)) {
+            output = "use";
         }
         return output;
     }
@@ -60,30 +62,6 @@ public class Game {
             output = "player";
         }
         return output;
-    }
-
-    public enum DetectTopic { // Constant Specific Method
-        /* I see now this implementation has limitations.
-            e.g will have to ask for "Object 1", "Person 1"
-         */
-        ROOM (b -> findByPattern("o*m+", b)),
-        PLAYER (b -> findByPattern("(m+e+|s*e*l*f+|p*l*a*y*e*r+)", b));
-
-        private final Function<String,Boolean> validPatterns ;
-        DetectTopic(Function<String,Boolean> validPatterns) {
-            this.validPatterns = validPatterns;
-        }
-
-        private static Boolean findByPattern(String regexPattern, String input) {
-            Pattern pattern = Pattern.compile(regexPattern);
-            Matcher matcher = pattern.matcher(input);
-
-            return matcher.find();
-        }
-
-        public Boolean compute(String x) {
-            return validPatterns.apply(x);
-        }
     }
 
 }

@@ -6,7 +6,7 @@ public class Player {
     String[] possibleDescriptions = {
             "A particularly remarkable Human",
             "A particularly tall Dwarf",
-            "A particularly small Giant\n also you smell like vinegar",
+            "A particularly small Giant\nalso you smell like vinegar",
             "A particularly weak Orc",
             "A very 'down to earth' Elf",
             "A hairless gorilla",
@@ -20,6 +20,9 @@ public class Player {
 
     public String look() {
         return description;
+    }
+    public String use() {
+        return "...dude";
     }
 
 }
