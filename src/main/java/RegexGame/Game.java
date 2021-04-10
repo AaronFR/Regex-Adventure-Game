@@ -11,16 +11,16 @@ public class Game {
 
     public static void main(String[] args) {
         // INITIAL: should be static imports
-        System.out.println("Welcome to 'Text Ad Venture'");
+        System.out.println("Welcome to 'bAdventure'");
         System.out.println("\nYou find yourself in a room. What will you do?");
 
         Room room = new Room();
         Player player = new Player();
 
         Scanner scanner = new Scanner(System.in);
-
         Boolean exitGame = false;
         String input = null;
+
         while (!exitGame) {
             input = scanner.nextLine().toLowerCase();
 
@@ -29,28 +29,10 @@ public class Game {
 
             // INITIAL: more flexible implementation -> Send to each object (Should not have double if statements)
             if (Noun.ROOM.equals(noun)) {
-                switch (verb) {
-                    case LOOK:
-                        System.out.println(room.look());
-                        break;
-                    case USE:
-                        System.out.println(room.use());
-                        break;
-                    default:
-                        System.out.println("Yes, Room. Very Good");
-                }
+                room.runVerb(verb);
             }
             if (Noun.PLAYER.equals(noun)) {
-                switch (verb) {
-                    case LOOK:
-                        System.out.println(player.look());
-                        break;
-                    case USE:
-                        System.out.println(player.use());
-                        break;
-                    default:
-                        System.out.println("Yeah what about you?");
-                }
+                player.runVerb(verb);
             }
 
             if ("exit game".equals(input)) {

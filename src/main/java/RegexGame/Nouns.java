@@ -17,7 +17,7 @@ public class Nouns {
         PLAYER (b -> findByPattern("(\\bm+e+\\b|\\bs+e+l+f*\\b|\\bp+l+a+y*e*r*\\b)", b)),
         CharacterOne (b -> findByPattern("(d+a*v*e+)", b));
 
-        private final Function<String,Boolean> validPatterns ;
+        private final Function<String,Boolean> validPatterns;
         Noun(Function<String,Boolean> validPatterns) {
             this.validPatterns = validPatterns;
         }

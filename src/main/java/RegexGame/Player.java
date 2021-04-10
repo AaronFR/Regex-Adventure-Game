@@ -1,5 +1,6 @@
 package RegexGame;
 
+import RegexGame.Verbs.Verb;
 import java.util.Random;
 
 public class Player {
@@ -18,6 +19,19 @@ public class Player {
 
     int randomPick = new Random().nextInt(possibleDescriptions.length);
     String description = possibleDescriptions[randomPick];
+
+    public void runVerb(Verb verb) {
+        switch (verb) {
+            case LOOK:
+                System.out.println(this.look());
+                break;
+            case USE:
+                System.out.println(this.use());
+                break;
+            default:
+                System.out.println("Yeah what about you?");
+        }
+    }
 
     public String look() {
         return description;
